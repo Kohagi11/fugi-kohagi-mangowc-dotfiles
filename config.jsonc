@@ -1,0 +1,163 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", 
+    "position": "top", 
+    "height": 30, 
+    "spacing": 4, 
+
+    // Choose the order of the modules
+    "modules-left": [
+        "dwl/tags",
+	"custom/sep",
+	"pulseaudio#mic",
+	"custom/sep",
+	"backlight",
+	"custom/sep",
+	"pulseaudio#audio",
+	"custom/sep",
+	"temperature"
+    ],
+    "modules-center": [
+	"custom/power"
+    ],
+    "modules-right": [
+        "network",
+        "custom/sep",
+        "battery",
+        "custom/sep",
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "tray"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*" : 9
+        }
+    },
+    "hyprland/window" : {
+        "max-length": 40,
+        "seperate-outputs": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "clock": {
+	"format": "{:%H:%M:%S}",
+        "format-alt": "{:%d-%m-%Y}",
+	"interval": 1
+    },
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "RAM: {used}GiB"
+    },
+    "disk": {
+        "interval": 60,
+        "path": "/",
+        "format": "Disk: {free}"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{icon} {time}",
+        "format-time": "{H}:{M}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format": "On 󱘖",
+        "format-disconnected": "Off ⚠"
+    },
+    "networkmanager": {
+	"format-wifi": "Online ",
+	"format-ethernet": "Online 󱘖",
+	"format-disconnected": "Offline ⚠",
+	"on-click": "nm-applet"
+    },
+        "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 90,
+        // "format-critical": "{temperatureF}°F {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "tooltip": true,
+        "tooltip-format": "{temperatureF}°F",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰖔", "󰖨"]
+    },
+        "pulseaudio#audio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " Muted",
+        "on-click": "pamixer -t",
+	"on-click-right": "kitty -e pulsemixer",
+        "on-scroll-up": "pamixer -i 2",
+        "on-scroll-down": "pamixer -d 2",
+        "scroll-step": 5,
+	"max-volume": 150,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+	}
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wlogout -C ~/.config/mango/wlogout/style.css -l  ~/.config/mango/wlogout/layout  -b 6 --protocol layer-shell",
+        "on-click-right": "sleep 0.1s"
+    },
+   "pulseaudio#mic": {
+    "format": "{format_source}",
+    "format-source": " On",
+    "format-source-muted": " Off",
+    "on-click": "pamixer --default-source -t"
+  },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "  ! ",
+        "none": "  - ",
+        "dnd-notification": "  ! ",
+        "dnd-none": "  - ",
+        "dnd-none": "  - ",
+        "inhibited-none": "  - ",
+        "dnd-inhibited-notification": "  ! ",
+        "dnd-inhibited-none": "  - "
+      }
+      },
+    "custom/sep": {
+        "format" : "|",
+        "interval" : 0
+    }
+}
