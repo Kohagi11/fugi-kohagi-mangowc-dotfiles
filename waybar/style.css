@@ -1,3 +1,9 @@
+/* Paleta gerada pelo wallust a partir do wallpaper atual.
+   Define background, foreground e color0..color15.
+   Template fonte: ~/.config/mango/waybar/waybar-colors.css
+   Saída (este import): ~/.config/mango/waybar/colors.css */
+@import "colors.css";
+
 @define-color white      	#F2F2F2;
 @define-color black      	#000000;
 @define-color text       	#FFFFFF;
@@ -9,17 +15,20 @@
 @define-color cyan			rgba(53, 140, 169, 1);
 
 @define-color background-module     @transparent;
-@define-color border-color          #7F4EA2;
-@define-color color13               #A0536C;
+/* accent = roxo principal (workspaces, janela, hover). Antes era #cba6f7 fixo */
+@define-color accent                @color5;
+@define-color border-color          @color5;
+/* renomeado de "color13" pra não colidir com o color13 que o wallust importa acima */
+@define-color rosetone               @color13;
 
-/* Catppuccin Latte accents (antes em latte.css) */
-@define-color sapphire  #209fb5;
-@define-color mauve     #8839ef;
-@define-color rosewater #dc8a78;
-@define-color sky       #04a5e5;
-@define-color red       #d20f39;
-@define-color yellow    #df8e1d;
-@define-color teal      #179299;
+/* Accents agora vêm do wallpaper via wallust em vez de fixos no Catppuccin Latte */
+@define-color sapphire  @color4;
+@define-color mauve     @color5;
+@define-color rosewater @color13;
+@define-color sky       @color12;
+@define-color red       @color1;
+@define-color yellow    @color3;
+@define-color teal      @color6;
 
 * {
     font-family: "JetBrainsMono Nerd Font";
@@ -33,7 +42,7 @@
 window#waybar {
     background: transparent;
     border-radius: 0px;
-    color: #cba6f7;
+    color: @accent;
 }
 
 window#waybar.hidden {
@@ -41,7 +50,7 @@ window#waybar.hidden {
 }
 
 tooltip {
-    background: #1e1e2e;
+    background: @background;
     border-radius: 12px;
     border-width: 1px;
     border-style: solid;
@@ -201,7 +210,7 @@ tooltip {
 
 #pulseaudio-slider,
 #pulseaudio {
-	color: @color13;
+	color: @rosetone;
 }
 
 #pulseaudio.muted {
@@ -272,18 +281,18 @@ tooltip {
     /* Tags - ext/workspaces (mangowm) */
 #workspaces button {
     padding: 0 7px;
-    color: #cba6f7;
+    color: @accent;
     background: transparent;
     border-radius: 8px;
     font-size: 95%;
     min-width: 22px;
-    border-bottom: 2px solid #cba6f7;
+    border-bottom: 2px solid @accent;
     transition: all 0.2s ease;
 }
 
 #workspaces button.active {
     color: #ffffff;
-    background-color: #cba6f7;
+    background-color: @accent;
     border-radius: 10px;
     padding: 0 10px;
     font-weight: bold;
@@ -307,8 +316,8 @@ tooltip {
 }
 
 #workspaces button:hover {
-    color: #ffd700;
-    background-color: rgba(255, 215, 0, 0.15);
+    color: @accent;
+    background-color: alpha(@accent, 0.15);
     border-radius: 8px;
 }
 

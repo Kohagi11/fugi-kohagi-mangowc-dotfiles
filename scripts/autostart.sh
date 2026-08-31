@@ -30,11 +30,15 @@ sleep 0.8
 sleep 0.8
 
 bash ~/.config/mango/scripts/waybar-launch.sh >/dev/null 2>&1 &
+awww-daemon &
+sleep 0.5
 waypaper --restore &
-~/.config/mango/scripts/auto-monitors.sh --watch &
+sleep 1
+bash ~/.config/mango/scripts/auto-monitors.sh --watch &
 swaync &
 discord &
 spicetify restore backup apply &
+spotify &
 helium-browser &
 wl-clip-persist --clipboard regular --reconnect-tries 0 &
 wl-paste --watch cliphist store &

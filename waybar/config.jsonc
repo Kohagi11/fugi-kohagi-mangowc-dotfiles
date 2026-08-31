@@ -22,6 +22,7 @@
         "temperature",
         "custom/sep",
         "mpris",
+        "custom/cava_mviz",
         "clock",
         "custom/power"
     ],
@@ -158,5 +159,10 @@
         "path": "/",
         "format": "󰋊 {percentage_used}%",
         "tooltip-format": "{used} usados de {total}"
+    },
+    "custom/cava_mviz": {
+    "exec": "$HOME/.config/mango/scripts/WaybarCava.sh",
+    "format": "{}",
+    "tooltip": false
     }
 }
