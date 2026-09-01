@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export XCURSOR_THEME=Animated-Mew-Cursor
+export XCURSOR_THEME=Samuel-Noticias-Cursor
 export XCURSOR_SIZE=24
 export XDG_CURRENT_DESKTOP=wlroots
 export XDG_SESSION_TYPE=wayland
